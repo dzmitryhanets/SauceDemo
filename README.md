@@ -1,7 +1,7 @@
 Checklist
 1. Login as standard_user and check that user is redirected to Products page
 2. Click some item name and validate that user is redirected to item page
-3. Click Add To Cart button on Item page and validate that item is added to cart
+3. Click Add To Cart button on Item page and validate that item is added to cart (by counter and directly in cart)
 4. Click Remove button on Item page → item is removed from cart
 5. Click Back button → user is redirected to Products page
 6. Click Add To Cart button on Products page → Item is added
