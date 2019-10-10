@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,8 +18,17 @@ public class CartPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public CartPage verifyPresenceOfItem() {
+    public boolean isElementPresented() {
+        try {
+            cartItem.isDisplayed();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 
+    public CartPage verifyPresenceOfItem() {
+        Assert.assertEquals(isElementPresented(), false);
         return this;
     }
 }
