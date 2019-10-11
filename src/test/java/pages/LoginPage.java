@@ -18,6 +18,8 @@ public class LoginPage extends BasePage{
     private  WebElement loginBtn;
     @FindBy(xpath = "//div[contains(text(),'Products')]")
     private WebElement productsTitle;
+    @FindBy(xpath = "//h3[@data-test='error']")
+    private WebElement incorrectMsg;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -44,4 +46,13 @@ public class LoginPage extends BasePage{
         return this;
     }
 
+    public LoginPage verifyLoginBtn() {
+        Assert.assertTrue(loginBtn.isDisplayed());
+        return this;
+    }
+
+    public LoginPage verifyIncorrectLogin(String errorMsg) {
+        Assert.assertTrue(incorrectMsg.getText().contains(errorMsg));
+        return this;
+    }
 }

@@ -23,6 +23,10 @@ public class HeaderArea extends BasePage {
     private WebElement closeMenuBtn;
     @FindBy(id = "about_sidebar_link")
     private WebElement aboutItem;
+    @FindBy(id = "logout_sidebar_link")
+    private WebElement logoutItem;
+    @FindBy(id = "inventory_sidebar_link")
+    private WebElement inventoryItem;
 
     public HeaderArea(WebDriver driver) {
         super(driver);
@@ -66,6 +70,16 @@ public class HeaderArea extends BasePage {
 
     public HeaderArea validateURL(String expectedURL) {
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+        return this;
+    }
+
+    public HeaderArea clickLogout() {
+        logoutItem.click();
+        return this;
+    }
+
+    public HeaderArea clickInventoryItem() {
+        inventoryItem.click();
         return this;
     }
 }
