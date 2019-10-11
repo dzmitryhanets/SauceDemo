@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class ProductsPage extends BasePage {
     private List<WebElement> items;
     @FindBy(xpath = "//button[@class='btn_primary btn_inventory']")
     private List<WebElement> addBtns;
+    @FindBy(xpath = "//button[@class='btn_secondary btn_inventory']")
+    private List<WebElement> removeBtns;
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -33,8 +36,18 @@ public class ProductsPage extends BasePage {
         return this;
     }
 
-    public HeaderArea clickAddBtn(int itemNumber) {
+    public ProductsPage clickAddBtn(int itemNumber) {
         addBtns.get(itemNumber - 1).click();
-        return new HeaderArea(driver);
+        return this;
+    }
+
+    public ProductsPage verifyRedirectToProducts(String expectedTitle) {
+        Assert.assertEquals(productsTitle.getText(), expectedTitle);
+        return new ProductsPage(driver);
+    }
+
+    public ProductsPage clickRemoveBtn(int btnNumber) {
+        removeBtns.get(btnNumber - 1).click();
+        return this;
     }
 }

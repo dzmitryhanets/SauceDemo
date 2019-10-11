@@ -17,6 +17,8 @@ public class ItemPage extends BasePage {
     private WebElement addBtn;
     @FindBy(xpath = "//button[@class='btn_secondary btn_inventory']")
     private WebElement removeBtn;
+    @FindBy(xpath = "//button[@class='inventory_details_back_button']")
+    private WebElement backBtn;
 
     public ItemPage(WebDriver driver) {
         super(driver);
@@ -36,6 +38,11 @@ public class ItemPage extends BasePage {
 
     public ItemPage clickRemoveBtn() {
         removeBtn.click();
+        return this;
+    }
+
+    public ItemPage clickBackButton() {
+        backBtn.click();
         return this;
     }
 }

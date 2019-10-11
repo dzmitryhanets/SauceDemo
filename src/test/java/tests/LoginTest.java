@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import pages.ProductsPage;
 
 public class LoginTest extends BaseTest {
 
@@ -12,8 +13,9 @@ public class LoginTest extends BaseTest {
                 .openPage()
                 .inputName("standard_user")
                 .inputPassword("secret_sauce")
-                .clickLoginBtn()
-                .verifyLogin("Products");
+                .clickLoginBtn();
+        new ProductsPage(driver)
+                .verifyRedirectToProducts("Products");
     }
 
 }

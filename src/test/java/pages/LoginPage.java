@@ -44,8 +44,4 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    public ProductsPage verifyLogin(String expectedTitle) {
-        Assert.assertEquals(productsTitle.getText(), expectedTitle);
-        return new ProductsPage(driver);
-    }
 }
