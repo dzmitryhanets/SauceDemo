@@ -15,6 +15,10 @@ public class CartPage extends BasePage {
     public WebElement cartItem;
     @FindBy(xpath = "//div[@class='inventory_item_name']")
     private List<WebElement> cartItemName;
+    @FindBy(xpath = "//a[contains(text(),'Continue Shopping')]")
+    private WebElement continueBtn;
+    @FindBy(xpath = "//a[contains(text(),'CHECKOUT')]")
+    public WebElement checkoutBtn;
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -26,4 +30,13 @@ public class CartPage extends BasePage {
         return itemNameInCart;
     }
 
+    public CartPage clickContinueBtn() {
+        continueBtn.click();
+        return this;
+    }
+
+    public CartPage clickCheckoutBtn() {
+        checkoutBtn.click();
+        return this;
+    }
 }
