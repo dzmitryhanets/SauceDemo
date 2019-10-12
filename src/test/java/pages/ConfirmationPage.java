@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -34,16 +35,18 @@ public class ConfirmationPage extends BasePage {
 
     public ConfirmationPage inputFisrtName(String userFirstName) {
         firstName.sendKeys(userFirstName);
+        wait.until(ExpectedConditions.elementToBeClickable(lastName));
         return this;
     }
 
     public ConfirmationPage inputLastName(String userLastName) {
         lastName.sendKeys(userLastName);
+        wait.until(ExpectedConditions.elementToBeClickable(postalCode));
         return this;
     }
 
     public ConfirmationPage inputPostalCode(String userPostalCode) {
-        lastName.sendKeys(userPostalCode);
+        postalCode.sendKeys(userPostalCode);
         return this;
     }
 
