@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -20,6 +21,18 @@ public class ProductsPage extends BasePage {
     private List<WebElement> addBtns;
     @FindBy(xpath = "//button[@class='btn_secondary btn_inventory']")
     private List<WebElement> removeBtns;
+    @FindBy(xpath = "//select[@class='product_sort_container']")
+    private WebElement sortMenu;
+    @FindBy(xpath = "//option[@value='za']")
+    private WebElement sortByNameDESC;
+    @FindBy(xpath = "//option[@value='az']")
+    private WebElement sortByNameASC;
+    @FindBy(xpath = "//div[@class='inventory_item_price']")
+    private List<WebElement> itemPrices;
+    @FindBy(xpath = "//option[@value='lohi']")
+    private WebElement sortByPriceASC;
+    @FindBy(xpath = "//option[@value='hilo']")
+    private WebElement sortByPriceDESC;
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -48,6 +61,45 @@ public class ProductsPage extends BasePage {
 
     public ProductsPage clickRemoveBtn(int btnNumber) {
         removeBtns.get(btnNumber - 1).click();
+        return this;
+    }
+
+    public ProductsPage sortItemsByNameDesc() {
+        sortMenu.click();
+        sortByNameDESC.click();
+        return this;
+    }
+
+    public ProductsPage verifySortingByName() {
+        String expectedItem = items.get(items.size() - 1).getText();
+        Assert.assertEquals(itemName, expectedItem);
+        return this;
+    }
+
+    public ProductsPage sortItemsByNameAsc() {
+        sortMenu.click();
+        sortByNameASC.click();
+        return this;
+    }
+
+    public ProductsPage sortItemsByPriceAsc() {
+        sortMenu.click();
+        sortByPriceASC.click();
+        wait.until(ExpectedConditions.elementToBeSelected(sortByPriceASC));
+        return this;
+    }
+
+    public ProductsPage verifyPricesAreSorted(boolean expectedResult) {
+        Double priceItem1 = new Double(Double.parseDouble(itemPrices.get(0).getText().substring(1)));
+        Double priceItem2 = new Double(Double.parseDouble(itemPrices.get(1).getText().substring(1)));
+        Assert.assertEquals(priceItem1 < priceItem2, expectedResult);
+        return this;
+    }
+
+    public ProductsPage sortItemsByPriceDesc() {
+        sortMenu.click();
+        sortByPriceDESC.click();
+        wait.until(ExpectedConditions.elementToBeSelected(sortByPriceDESC));
         return this;
     }
 }

@@ -46,4 +46,38 @@ public class ProductsTest extends BaseTest {
         new HeaderArea(driver)
                 .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
     }
+
+    @Test
+    public void itemsAreSortedByNameDESC() {
+        new ProductsPage(driver)
+                .getItemName(1);
+        new ProductsPage(driver)
+                .sortItemsByNameDesc()
+                .verifySortingByName();
+    }
+
+    @Test
+    public void itemsAreSortedByNameASC() {
+        new ProductsPage(driver)
+                .sortItemsByNameDesc()
+                .getItemName(1);
+        new ProductsPage(driver)
+                .sortItemsByNameAsc()
+                .verifySortingByName();
+    }
+
+    @Test
+    public void itemsAreSortedByPriceASC() {
+        new ProductsPage(driver)
+                .sortItemsByPriceAsc()
+                .verifyPricesAreSorted(true);
+    }
+
+    @Test
+    public void itemsAreSortedByPriceDESC() {
+        new ProductsPage(driver)
+                .sortItemsByPriceDesc()
+                .verifyPricesAreSorted(false);
+    }
 }
+
