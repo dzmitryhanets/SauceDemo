@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,11 +25,13 @@ public class CartPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    @Step("User clicks Continue Shopping button")
     public CartPage clickContinueBtn() {
         continueBtn.click();
         return this;
     }
 
+    @Step("User clicks Checkout button")
     public CartPage clickCheckoutBtn() {
         checkoutBtn.click();
         return this;

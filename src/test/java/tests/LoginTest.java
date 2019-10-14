@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -7,7 +8,7 @@ import pages.ProductsPage;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(description = "Successful login")
     public void userIsSuccessfullyLogin() {
         new LoginPage(driver)
                 .openPage()
@@ -19,6 +20,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "incorrectLogin")
+    @Description("Incorrect data ban")
     public void incorrectDataIsNotAccepted(String name, String password, String expectedResult) {
         new LoginPage(driver)
                 .openPage()

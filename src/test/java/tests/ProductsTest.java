@@ -8,7 +8,7 @@ import pages.ProductsPage;
 
 public class ProductsTest extends BaseTest {
 
-    @Test
+    @Test(description = "Redirection to Details page")
     public void userIsRedirectedToItemPage() {
         ProductsPage productsPage = new ProductsPage(driver);
         productsPage.getItemName(3);
@@ -18,7 +18,7 @@ public class ProductsTest extends BaseTest {
                 .verifyItemPage();
     }
 
-    @Test
+    @Test(description = "Items count")
     public void itemIsAddedToCart() {
         ProductsPage productsPage = new ProductsPage(driver);
         productsPage
@@ -28,7 +28,7 @@ public class ProductsTest extends BaseTest {
                 .verifyCount("2");
     }
 
-    @Test
+    @Test(description = "Items in cart")
     public void itemIsAddedToCartOnCartPage() {
         new ProductsPage(driver)
                 .clickAddBtn(2);
@@ -38,7 +38,7 @@ public class ProductsTest extends BaseTest {
                 .verifyPresenceOfItem(new CartPage(driver).cartItem, true);
     }
 
-    @Test
+    @Test(description = "Empty counter")
     public void itemIsRemovedFromCounter() {
         new ProductsPage(driver)
                 .clickAddBtn(2)
@@ -47,7 +47,7 @@ public class ProductsTest extends BaseTest {
                 .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
     }
 
-    @Test
+    @Test(description = "Sort by name in descending order")
     public void itemsAreSortedByNameDESC() {
         new ProductsPage(driver)
                 .getItemName(1);
@@ -56,7 +56,7 @@ public class ProductsTest extends BaseTest {
                 .verifySortingByName();
     }
 
-    @Test
+    @Test(description = "Sort by name in ascending order")
     public void itemsAreSortedByNameASC() {
         new ProductsPage(driver)
                 .sortItemsByNameDesc()
@@ -66,14 +66,14 @@ public class ProductsTest extends BaseTest {
                 .verifySortingByName();
     }
 
-    @Test
+    @Test(description = "Sort by price in ascending order")
     public void itemsAreSortedByPriceASC() {
         new ProductsPage(driver)
                 .sortItemsByPriceAsc()
                 .verifyPricesAreSorted(true);
     }
 
-    @Test
+    @Test(description = "Sort by price in descending order")
     public void itemsAreSortedByPriceDESC() {
         new ProductsPage(driver)
                 .sortItemsByPriceDesc()

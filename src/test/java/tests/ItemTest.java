@@ -5,7 +5,7 @@ import pages.*;
 
 public class ItemTest extends BaseTest {
 
-    @Test
+    @Test(description = "Adding goods on the counter")
     public void itemIsAddedToCartOnCounter() {
         new ProductsPage(driver)
                 .clickItem(2);
@@ -15,7 +15,7 @@ public class ItemTest extends BaseTest {
                 .verifyCount("1");
     }
 
-    @Test
+    @Test(description = "Adding goods in cart")
     public void itemIsAddedToCartOnCartPage() {
         new ProductsPage(driver)
                 .clickItem(2);
@@ -27,7 +27,7 @@ public class ItemTest extends BaseTest {
                 .verifyPresenceOfItem(new CartPage(driver).cartItem, true);
     }
 
-    @Test
+    @Test(description = "Removing items from cart")
     public void itemIsRemovedFromCart() {
         new ProductsPage(driver)
                 .clickItem(2);
@@ -40,7 +40,7 @@ public class ItemTest extends BaseTest {
                 .verifyPresenceOfItem(new CartPage(driver).cartItem, false);
     }
 
-    @Test
+    @Test(description = "Removing goods from counter")
     public void itemIsRemovedFromCounter() {
         new ProductsPage(driver)
                 .clickItem(2);
@@ -51,7 +51,7 @@ public class ItemTest extends BaseTest {
                 .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
     }
 
-    @Test
+    @Test(description = "Back button working")
     public void userIsRedirectedFromItemDetailsPage() {
         new ProductsPage(driver)
                 .clickItem(3);

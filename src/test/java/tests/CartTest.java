@@ -7,7 +7,7 @@ import pages.ProductsPage;
 
 public class CartTest extends BaseTest {
 
-    @Test
+    @Test(description = "Continue Shopping btn working capacity")
     public void userIsRedirectedToProducts() {
         new HeaderArea(driver)
                 .clickCartIcon();

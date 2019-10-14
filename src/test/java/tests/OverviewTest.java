@@ -5,7 +5,7 @@ import pages.*;
 
 public class OverviewTest extends BaseTest {
 
-    @Test
+    @Test(description = "Order cancellation")
     public void userIsAbleToCancelOrder() {
         new ProductsPage(driver)
                 .clickAddBtn(2);
@@ -24,7 +24,7 @@ public class OverviewTest extends BaseTest {
                 .verifyRedirectToProducts("Products");
     }
 
-    @Test
+    @Test(description = "Finish order")
     public void userIsAbleToFinishOrder() {
         new ProductsPage(driver)
                 .clickAddBtn(2);

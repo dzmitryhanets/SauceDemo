@@ -7,7 +7,7 @@ import pages.ProductsPage;
 
 public class HeaderAreaTest extends BaseTest {
 
-    @Test
+    @Test(description = "Reset App State working")
     public void appStateIsReset() {
         new ProductsPage(driver)
                 .clickAddBtn(2);
@@ -18,7 +18,7 @@ public class HeaderAreaTest extends BaseTest {
                 .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
     }
 
-    @Test
+    @Test(description = "About link working")
     public void userIsRedirected() {
         new HeaderArea(driver)
                 .clickMenuBtn()
@@ -26,7 +26,7 @@ public class HeaderAreaTest extends BaseTest {
                 .validateURL("https://saucelabs.com/");
     }
 
-    @Test
+    @Test(description = "Logout working")
     public void userIsLoggedOut() {
         new HeaderArea(driver)
                 .clickMenuBtn()
@@ -35,7 +35,7 @@ public class HeaderAreaTest extends BaseTest {
                 .verifyLoginBtn();
     }
 
-    @Test
+    @Test(description = "All Items link working" )
     public void userIsRedirectedToInventory() {
         new ProductsPage(driver)
                 .clickItem(4);

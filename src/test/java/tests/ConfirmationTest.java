@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.CartPage;
@@ -8,7 +9,7 @@ import pages.HeaderArea;
 
 public class ConfirmationTest extends BaseTest {
 
-    @Test
+    @Test(description = "Cancel checkout")
     public void userIsRedirectedToCart() {
         new HeaderArea(driver)
                 .clickCartIcon();
@@ -20,6 +21,7 @@ public class ConfirmationTest extends BaseTest {
     }
 
     @Test(dataProvider = "incorrectData")
+    @Description("Empty data ban")
     public void emptyDataIsNotAccepted(String firstName, String lastName, String code, String errorMessage) {
         new HeaderArea(driver)
                 .clickCartIcon();

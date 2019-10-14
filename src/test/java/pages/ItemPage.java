@@ -1,10 +1,12 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import utils.AllureUtils;
 
 import static pages.ProductsPage.itemName;
 
@@ -25,22 +27,27 @@ public class ItemPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    @Step("Verifying if user is redirected to details page")
     public ItemPage verifyItemPage() {
         String actualItemName = itemDetailsName.getText();
         Assert.assertEquals(actualItemName, itemName);
+        AllureUtils.takeScreenshot(driver);
         return this;
     }
 
+    @Step("User clicks Add To Cart button")
     public ItemPage clickAddBtn() {
         addBtn.click();
         return this;
     }
 
+    @Step("User clicks Remove button")
     public ItemPage clickRemoveBtn() {
         removeBtn.click();
         return this;
     }
 
+    @Step("User clicks Back button")
     public ItemPage clickBackButton() {
         backBtn.click();
         return this;

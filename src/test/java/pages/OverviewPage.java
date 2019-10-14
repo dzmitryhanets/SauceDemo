@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,11 +19,13 @@ public class OverviewPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    @Step("User cancels order")
     public OverviewPage cancelOrder() {
         cancelBtn.click();
         return this;
     }
 
+    @Step("User finishes order")
     public OverviewPage finishOrder() {
         finishBtn.click();
         return this;
