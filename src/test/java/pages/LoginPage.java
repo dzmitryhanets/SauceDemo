@@ -34,6 +34,10 @@ public class LoginPage extends BasePage{
         return this;
     }
 
+    public void isPageOpened() {
+        loginBtn.isDisplayed();
+    }
+
     @Step("User inputs name")
     public LoginPage inputName(String name) {
         userName.sendKeys(name);

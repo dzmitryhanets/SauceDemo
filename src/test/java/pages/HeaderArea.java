@@ -34,6 +34,10 @@ public class HeaderArea extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    public void isPageOpened() {
+        cartIcon.isDisplayed();
+    }
+
     @Step("Getting items count from cart")
     public String getItemsCount() {
         return cartItemsCount.getText();
@@ -47,9 +51,10 @@ public class HeaderArea extends BasePage {
     }
 
     @Step("User click Cart icon")
-    public HeaderArea clickCartIcon() {
+    public HeaderArea /*CartPage*/ clickCartIcon() {
         cartIcon.click();
         return this;
+        //return new CartPage(driver);
     }
 
     @Step("User click Menu icon")
@@ -62,6 +67,7 @@ public class HeaderArea extends BasePage {
     @Step("User clicks Reset App State link")
     public HeaderArea resetAppState() {
         resetAppItem.click();
+        wait.until(ExpectedConditions.elementToBeClickable(cartIcon));
         return this;
     }
 

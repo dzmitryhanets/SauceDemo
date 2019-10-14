@@ -27,6 +27,10 @@ public class ItemPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    public void isPageOpened() {
+        backBtn.isDisplayed();
+    }
+
     @Step("Verifying if user is redirected to details page")
     public ItemPage verifyItemPage() {
         String actualItemName = itemDetailsName.getText();

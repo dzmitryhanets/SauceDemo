@@ -19,6 +19,10 @@ public class SuccessPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    public void isPageOpened() {
+        successMsg.isDisplayed();
+    }
+
     @Step("Verifying if order is finished successfully")
     public SuccessPage verifySuccessOrder(String expectedText) {
         Assert.assertEquals(successMsg.getText(), expectedText);

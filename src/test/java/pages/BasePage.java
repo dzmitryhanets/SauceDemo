@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import utils.AllureUtils;
 
-public class BasePage {
+public abstract class BasePage {
     public WebDriver driver;
 
     BasePage(WebDriver driver) {
@@ -30,4 +30,8 @@ public class BasePage {
         Assert.assertEquals(isElementPresented(element), isPresented);
         AllureUtils.takeScreenshot(driver);
     }
+
+    public abstract void isPageOpened();
+
+    /*public abstract void openPage();*/
 }

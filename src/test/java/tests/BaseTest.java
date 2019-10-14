@@ -18,8 +18,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         LoginPage loginPage = new LoginPage(driver);
         loginPage
-                .openPage()
-                .inputName("standard_user")
+                .openPage();
+        loginPage.inputName("standard_user")
                 .inputPassword("secret_sauce")
                 .clickLoginBtn();
     }

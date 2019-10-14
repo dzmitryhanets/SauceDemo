@@ -41,6 +41,10 @@ public class ProductsPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    public void isPageOpened() {
+        productsTitle.isDisplayed();
+    }
+
     @Step("Getting item name")
     public String getItemName(int itemNumber) {
         itemName = items.get(itemNumber - 1).getText();

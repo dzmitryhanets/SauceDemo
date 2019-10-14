@@ -18,5 +18,18 @@ Checklist
 17. On Checkout: Overview click Cancel → user is redirected to Products
 18. On Checkout: Overview click Finish → user is redirected to THANK YOU FOR YOUR ORDER page
 19. Logout → user is redirected to Login page
-20. Login as locked_out_user and check that message 'Epic sadface: Sorry, this user has been locked out.' is displayed 
+20. Login as locked_out_user and check that message 'Epic sadface: Sorry, this user has been locked out.' is displayed
+
+
+//TODO
+
+1. Implement WebDriverFactory with Capabilities
+2. Add description into @BeforeMethod and @AfterMethod 
+3. Fix LoginTest (by groups or either my removal of Inheritance)
+4. Move all version into properties inside pom.xml
+5. Create screenshots after failure of the test (TestNG listener)
+6. Add reasons into assertions
+7. CircleCI integration
+8. Move WebDriverWait into BasePage
+9. Implement openPage() and isPageOpened()
  

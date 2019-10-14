@@ -19,6 +19,10 @@ public class OverviewPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    public void isPageOpened() {
+        finishBtn.isDisplayed();
+    }
+
     @Step("User cancels order")
     public OverviewPage cancelOrder() {
         cancelBtn.click();

@@ -22,8 +22,7 @@ public class ItemTest extends BaseTest {
         new ItemPage(driver)
                 .clickAddBtn();
         new HeaderArea(driver)
-                .clickCartIcon();
-        new CartPage(driver)
+                .clickCartIcon()
                 .verifyPresenceOfItem(new CartPage(driver).cartItem, true);
     }
 
@@ -35,8 +34,7 @@ public class ItemTest extends BaseTest {
                 .clickAddBtn()
                 .clickRemoveBtn();
         new HeaderArea(driver)
-                .clickCartIcon();
-        new CartPage(driver)
+                .clickCartIcon()
                 .verifyPresenceOfItem(new CartPage(driver).cartItem, false);
     }
 
@@ -46,18 +44,16 @@ public class ItemTest extends BaseTest {
                 .clickItem(2);
         new ItemPage(driver)
                 .clickAddBtn()
-                .clickRemoveBtn();
-        new HeaderArea(driver)
+                .clickRemoveBtn()
                 .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
     }
 
     @Test(description = "Back button working")
     public void userIsRedirectedFromItemDetailsPage() {
-        new ProductsPage(driver)
+        ProductsPage productsPage = new ProductsPage(driver)
                 .clickItem(3);
         new ItemPage(driver)
                 .clickBackButton();
-        new ProductsPage(driver)
-                .verifyRedirectToProducts("Products");
+        productsPage.verifyRedirectToProducts("Products");
     }
 }

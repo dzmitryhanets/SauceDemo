@@ -11,11 +11,12 @@ public class HeaderAreaTest extends BaseTest {
     public void appStateIsReset() {
         new ProductsPage(driver)
                 .clickAddBtn(2);
-        new HeaderArea(driver)
+        HeaderArea headerArea = new HeaderArea(driver);
+        headerArea
                 .clickMenuBtn()
                 .resetAppState()
                 .closeMenu()
-                .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
+                .verifyPresenceOfItem(headerArea.cartItemsCount, false);
     }
 
     @Test(description = "About link working")
@@ -37,12 +38,11 @@ public class HeaderAreaTest extends BaseTest {
 
     @Test(description = "All Items link working" )
     public void userIsRedirectedToInventory() {
-        new ProductsPage(driver)
+        ProductsPage productsPage = new ProductsPage(driver)
                 .clickItem(4);
         new HeaderArea(driver)
                 .clickMenuBtn()
                 .clickInventoryItem();
-        new ProductsPage(driver)
-                .verifyRedirectToProducts("Products");
+        productsPage.verifyRedirectToProducts("Products");
     }
 }

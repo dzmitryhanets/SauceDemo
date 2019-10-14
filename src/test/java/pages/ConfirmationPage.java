@@ -30,10 +30,14 @@ public class ConfirmationPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    @Step("User cancels chrckout")
-    public ConfirmationPage clickCancelBtn() {
+    public void isPageOpened() {
+        confirmBtn.isDisplayed();
+    }
+
+    @Step("User cancels checkout")
+    public CartPage clickCancelBtn() {
         cancelBtn.click();
-        return this;
+        return new CartPage(driver);
     }
 
     @Step("User inputs first name")

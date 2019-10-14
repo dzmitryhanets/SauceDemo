@@ -20,8 +20,7 @@ public class ProductsTest extends BaseTest {
 
     @Test(description = "Items count")
     public void itemIsAddedToCart() {
-        ProductsPage productsPage = new ProductsPage(driver);
-        productsPage
+        new ProductsPage(driver)
                 .clickAddBtn(2)
                 .clickAddBtn(1);
         new HeaderArea(driver)
@@ -33,8 +32,7 @@ public class ProductsTest extends BaseTest {
         new ProductsPage(driver)
                 .clickAddBtn(2);
         new HeaderArea(driver)
-                .clickCartIcon();
-        new CartPage(driver)
+                .clickCartIcon()
                 .verifyPresenceOfItem(new CartPage(driver).cartItem, true);
     }
 
@@ -42,26 +40,25 @@ public class ProductsTest extends BaseTest {
     public void itemIsRemovedFromCounter() {
         new ProductsPage(driver)
                 .clickAddBtn(2)
-                .clickRemoveBtn(1);
-        new HeaderArea(driver)
+                .clickRemoveBtn(1)
                 .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
     }
 
     @Test(description = "Sort by name in descending order")
     public void itemsAreSortedByNameDESC() {
-        new ProductsPage(driver)
-                .getItemName(1);
-        new ProductsPage(driver)
+        ProductsPage productsPage = new ProductsPage(driver);
+        productsPage.getItemName(1);
+        productsPage
                 .sortItemsByNameDesc()
                 .verifySortingByName();
     }
 
     @Test(description = "Sort by name in ascending order")
     public void itemsAreSortedByNameASC() {
-        new ProductsPage(driver)
-                .sortItemsByNameDesc()
+        ProductsPage productsPage = new ProductsPage(driver);
+        productsPage.sortItemsByNameDesc()
                 .getItemName(1);
-        new ProductsPage(driver)
+        productsPage
                 .sortItemsByNameAsc()
                 .verifySortingByName();
     }
