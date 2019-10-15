@@ -2,9 +2,12 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.LoginPage;
+import utils.AllureUtils;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -25,7 +28,10 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void closeDriver() {
+    public void sendResultToReport(ITestResult testResult) throws IOException {
+        if (testResult.getStatus() == ITestResult.FAILURE) {
+            AllureUtils.takeScreenshot(driver);
+        }
         driver.quit();
     }
 }
