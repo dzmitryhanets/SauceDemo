@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utils.AllureUtils;
 
 public class HeaderArea extends BasePage {
     WebDriverWait wait;
@@ -48,7 +47,6 @@ public class HeaderArea extends BasePage {
     @Step("Verifying correct number of items in cart")
     public HeaderArea verifyCount(String expectedCount) {
         Assert.assertEquals(getItemsCount(), expectedCount);
-        AllureUtils.takeScreenshot(driver);
         return this;
     }
 
@@ -87,7 +85,6 @@ public class HeaderArea extends BasePage {
     @Step("Verifying if user redirected to correct page")
     public HeaderArea validateURL(String expectedURL) {
         Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
-        AllureUtils.takeScreenshot(driver);
         return this;
     }
 

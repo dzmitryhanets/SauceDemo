@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utils.AllureUtils;
 
 import static pages.ProductsPage.itemName;
 
@@ -36,7 +35,6 @@ public class ItemPage extends BasePage {
     public ItemPage verifyItemPage() {
         String actualItemName = itemDetailsName.getText();
         Assert.assertEquals(actualItemName, itemName);
-        AllureUtils.takeScreenshot(driver);
         return this;
     }
 

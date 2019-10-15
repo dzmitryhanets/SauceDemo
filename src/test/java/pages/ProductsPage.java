@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utils.AllureUtils;
 
 import java.util.List;
 
@@ -67,7 +66,6 @@ public class ProductsPage extends BasePage {
     @Step("Verifying that user is on Products page")
     public ProductsPage verifyRedirectToProducts(String expectedTitle) {
         Assert.assertEquals(productsTitle.getText(), expectedTitle);
-        AllureUtils.takeScreenshot(driver);
         return this;
     }
 
@@ -88,7 +86,6 @@ public class ProductsPage extends BasePage {
     public ProductsPage verifySortingByName() {
         String expectedItem = items.get(items.size() - 1).getText();
         Assert.assertEquals(itemName, expectedItem);
-        AllureUtils.takeScreenshot(driver);
         return this;
     }
 
@@ -112,7 +109,6 @@ public class ProductsPage extends BasePage {
         Double priceItem1 = new Double(Double.parseDouble(itemPrices.get(0).getText().substring(1)));
         Double priceItem2 = new Double(Double.parseDouble(itemPrices.get(1).getText().substring(1)));
         Assert.assertEquals(priceItem1 < priceItem2, expectedResult);
-        AllureUtils.takeScreenshot(driver);
         return this;
     }
 

@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utils.AllureUtils;
 
 public class ConfirmationPage extends BasePage {
     WebDriverWait wait;
@@ -70,7 +69,6 @@ public class ConfirmationPage extends BasePage {
     @Step("Verifying that incorrect personal data is not accepted")
     public ConfirmationPage verifyIncorrectData(String errorMsgText) {
         Assert.assertTrue(errorMsg.getText().contains(errorMsgText));
-        AllureUtils.takeScreenshot(driver);
         return this;
     }
 }

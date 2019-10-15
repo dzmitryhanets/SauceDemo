@@ -25,6 +25,5 @@ public abstract class BasePage {
         }
     }
 
-    @Step("Verifying if element is presented on page")
     public abstract void verifyPresenceOfItem(boolean isPresented);
 }
