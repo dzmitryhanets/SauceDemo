@@ -41,8 +41,9 @@ public class ProductsPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public void isPageOpened() {
-        productsTitle.isDisplayed();
+    @Override
+    public void verifyPresenceOfItem(boolean isPresented) {
+        Assert.assertEquals(isElementPresented(productsTitle), isPresented);
     }
 
     @Step("Getting item name")
@@ -67,13 +68,13 @@ public class ProductsPage extends BasePage {
     public ProductsPage verifyRedirectToProducts(String expectedTitle) {
         Assert.assertEquals(productsTitle.getText(), expectedTitle);
         AllureUtils.takeScreenshot(driver);
-        return new ProductsPage(driver);
+        return this;
     }
 
     @Step("Click Remove button")
-    public ProductsPage clickRemoveBtn(int btnNumber) {
+    public HeaderArea clickRemoveBtn(int btnNumber) {
         removeBtns.get(btnNumber - 1).click();
-        return this;
+        return new HeaderArea(driver);
     }
 
     @Step("Select sorting by name in descending order")

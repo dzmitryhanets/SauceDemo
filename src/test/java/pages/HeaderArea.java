@@ -34,8 +34,10 @@ public class HeaderArea extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public void isPageOpened() {
-        cartIcon.isDisplayed();
+    @Override
+    @Step("Verifying if element is presented on page")
+    public void verifyPresenceOfItem(boolean isPresented) {
+        Assert.assertEquals(isElementPresented(cartItemsCount), isPresented);
     }
 
     @Step("Getting items count from cart")
@@ -51,10 +53,9 @@ public class HeaderArea extends BasePage {
     }
 
     @Step("User click Cart icon")
-    public HeaderArea /*CartPage*/ clickCartIcon() {
+    public CartPage clickCartIcon() {
         cartIcon.click();
-        return this;
-        //return new CartPage(driver);
+        return new CartPage(driver);
     }
 
     @Step("User click Menu icon")
@@ -97,8 +98,8 @@ public class HeaderArea extends BasePage {
     }
 
     @Step("User clicks All Items link")
-    public HeaderArea clickInventoryItem() {
+    public ProductsPage clickInventoryItem() {
         inventoryItem.click();
-        return this;
+        return new ProductsPage(driver);
     }
 }

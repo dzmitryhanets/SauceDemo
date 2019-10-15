@@ -13,11 +13,11 @@ public class ConfirmationTest extends BaseTest {
     public void userIsRedirectedToCart() {
         new HeaderArea(driver)
                 .clickCartIcon();
-        CartPage cartPage = new CartPage(driver)
+        new CartPage(driver)
                 .clickCheckoutBtn();
         new ConfirmationPage(driver)
                 .clickCancelBtn()
-                .verifyPresenceOfItem(cartPage.checkoutBtn, true);
+                .verifyPresenceOfItem(false);
     }
 
     @Test(dataProvider = "incorrectData")

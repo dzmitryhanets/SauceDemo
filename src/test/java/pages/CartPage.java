@@ -13,7 +13,7 @@ public class CartPage extends BasePage {
     WebDriverWait wait;
 
     @FindBy(xpath = "//div[@class='cart_item']")
-    public /*private*/ WebElement cartItem;
+    private WebElement cartItem;
     @FindBy(xpath = "//div[@class='inventory_item_name']")
     private List<WebElement> cartItemName;
     @FindBy(xpath = "//a[contains(text(),'Continue Shopping')]")
@@ -26,8 +26,10 @@ public class CartPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public void isPageOpened() {
-        Assert.assertTrue(cartItem.isDisplayed());
+    @Override
+    @Step("Verifying if element is presented on page")
+    public void verifyPresenceOfItem(boolean isPresented) {
+        Assert.assertEquals(isElementPresented(cartItem), isPresented);
     }
 
     @Step("User clicks Continue Shopping button")

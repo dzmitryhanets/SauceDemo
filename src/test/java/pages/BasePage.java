@@ -26,12 +26,5 @@ public abstract class BasePage {
     }
 
     @Step("Verifying if element is presented on page")
-    public void verifyPresenceOfItem(WebElement element, boolean isPresented) {
-        Assert.assertEquals(isElementPresented(element), isPresented);
-        AllureUtils.takeScreenshot(driver);
-    }
-
-    public abstract void isPageOpened();
-
-    /*public abstract void openPage();*/
+    public abstract void verifyPresenceOfItem(boolean isPresented);
 }

@@ -28,14 +28,15 @@ public class LoginPage extends BasePage{
         this.wait = new WebDriverWait(driver, 10);
     }
 
+    @Override
+    public void verifyPresenceOfItem(boolean isPresented) {
+        Assert.assertEquals(isElementPresented(loginBtn), isPresented);
+    }
+
     @Step("Open Login page")
     public LoginPage openPage(){
         driver.get(URL);
         return this;
-    }
-
-    public void isPageOpened() {
-        loginBtn.isDisplayed();
     }
 
     @Step("User inputs name")

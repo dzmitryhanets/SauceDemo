@@ -7,7 +7,7 @@ public class OverviewTest extends BaseTest {
 
     @Test(description = "Order cancellation")
     public void userIsAbleToCancelOrder() {
-        ProductsPage productsPage = new ProductsPage(driver)
+        new ProductsPage(driver)
                 .clickAddBtn(2);
         new HeaderArea(driver)
                 .clickCartIcon();
@@ -19,8 +19,8 @@ public class OverviewTest extends BaseTest {
                 .inputPostalCode("test")
                 .clickConfirmBtn();
         new OverviewPage(driver)
-                .cancelOrder();
-        productsPage.verifyRedirectToProducts("Products");
+                .cancelOrder()
+                .verifyRedirectToProducts("Products");
     }
 
     @Test(description = "Finish order")

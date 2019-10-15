@@ -30,8 +30,9 @@ public class ConfirmationPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public void isPageOpened() {
-        confirmBtn.isDisplayed();
+    @Override
+    public void verifyPresenceOfItem(boolean isPresented) {
+        Assert.assertEquals(isElementPresented(postalCode), isPresented);
     }
 
     @Step("User cancels checkout")

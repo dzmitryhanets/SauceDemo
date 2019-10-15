@@ -16,7 +16,7 @@ public class HeaderAreaTest extends BaseTest {
                 .clickMenuBtn()
                 .resetAppState()
                 .closeMenu()
-                .verifyPresenceOfItem(headerArea.cartItemsCount, false);
+                .verifyPresenceOfItem(false);
     }
 
     @Test(description = "About link working")
@@ -38,11 +38,11 @@ public class HeaderAreaTest extends BaseTest {
 
     @Test(description = "All Items link working" )
     public void userIsRedirectedToInventory() {
-        ProductsPage productsPage = new ProductsPage(driver)
+        new ProductsPage(driver)
                 .clickItem(4);
         new HeaderArea(driver)
                 .clickMenuBtn()
-                .clickInventoryItem();
-        productsPage.verifyRedirectToProducts("Products");
+                .clickInventoryItem()
+                .verifyRedirectToProducts("Products");
     }
 }

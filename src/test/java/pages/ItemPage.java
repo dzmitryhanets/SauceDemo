@@ -27,8 +27,9 @@ public class ItemPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public void isPageOpened() {
-        backBtn.isDisplayed();
+    @Override
+    public void verifyPresenceOfItem(boolean isPresented) {
+        Assert.assertEquals(isElementPresented(backBtn), isPresented);
     }
 
     @Step("Verifying if user is redirected to details page")
@@ -46,14 +47,14 @@ public class ItemPage extends BasePage {
     }
 
     @Step("User clicks Remove button")
-    public ItemPage clickRemoveBtn() {
+    public HeaderArea clickRemoveBtn() {
         removeBtn.click();
-        return this;
+        return new HeaderArea(driver);
     }
 
     @Step("User clicks Back button")
-    public ItemPage clickBackButton() {
+    public ProductsPage clickBackButton() {
         backBtn.click();
-        return this;
+        return new ProductsPage(driver);
     }
 }

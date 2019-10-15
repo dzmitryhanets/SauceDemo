@@ -23,7 +23,7 @@ public class ItemTest extends BaseTest {
                 .clickAddBtn();
         new HeaderArea(driver)
                 .clickCartIcon()
-                .verifyPresenceOfItem(new CartPage(driver).cartItem, true);
+                .verifyPresenceOfItem(true);
     }
 
     @Test(description = "Removing items from cart")
@@ -35,7 +35,7 @@ public class ItemTest extends BaseTest {
                 .clickRemoveBtn();
         new HeaderArea(driver)
                 .clickCartIcon()
-                .verifyPresenceOfItem(new CartPage(driver).cartItem, false);
+                .verifyPresenceOfItem(false);
     }
 
     @Test(description = "Removing goods from counter")
@@ -45,15 +45,15 @@ public class ItemTest extends BaseTest {
         new ItemPage(driver)
                 .clickAddBtn()
                 .clickRemoveBtn()
-                .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
+                .verifyPresenceOfItem(false);
     }
 
     @Test(description = "Back button working")
     public void userIsRedirectedFromItemDetailsPage() {
-        ProductsPage productsPage = new ProductsPage(driver)
+        new ProductsPage(driver)
                 .clickItem(3);
         new ItemPage(driver)
-                .clickBackButton();
-        productsPage.verifyRedirectToProducts("Products");
+                .clickBackButton()
+                .verifyRedirectToProducts("Products");
     }
 }

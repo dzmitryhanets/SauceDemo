@@ -19,8 +19,9 @@ public class SuccessPage extends BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    public void isPageOpened() {
-        successMsg.isDisplayed();
+    @Override
+    public void verifyPresenceOfItem(boolean isPresented) {
+        Assert.assertEquals(isElementPresented(successMsg), isPresented);
     }
 
     @Step("Verifying if order is finished successfully")

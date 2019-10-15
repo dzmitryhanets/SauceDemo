@@ -1,7 +1,6 @@
 package tests;
 
 import org.testng.annotations.Test;
-import pages.CartPage;
 import pages.HeaderArea;
 import pages.ItemPage;
 import pages.ProductsPage;
@@ -33,7 +32,7 @@ public class ProductsTest extends BaseTest {
                 .clickAddBtn(2);
         new HeaderArea(driver)
                 .clickCartIcon()
-                .verifyPresenceOfItem(new CartPage(driver).cartItem, true);
+                .verifyPresenceOfItem(true);
     }
 
     @Test(description = "Empty counter")
@@ -41,7 +40,7 @@ public class ProductsTest extends BaseTest {
         new ProductsPage(driver)
                 .clickAddBtn(2)
                 .clickRemoveBtn(1)
-                .verifyPresenceOfItem(new HeaderArea(driver).cartItemsCount, false);
+                .verifyPresenceOfItem(false);
     }
 
     @Test(description = "Sort by name in descending order")
