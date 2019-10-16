@@ -4,12 +4,17 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public abstract class BasePage {
     public WebDriver driver;
+    WebDriverWait wait;
 
     BasePage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, 10);
         PageFactory.initElements(driver, this);
     }
 
@@ -20,6 +25,14 @@ public abstract class BasePage {
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public void waitClickableElement(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void waitSelectedElement(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeSelected(element));
     }
 
     public abstract void verifyPresenceOfItem(boolean isPresented);

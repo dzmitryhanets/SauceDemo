@@ -4,11 +4,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class LoginPage extends BasePage{
-    WebDriverWait wait;
 
     String URL = "https://www.saucedemo.com";
     @FindBy(id = "user-name")
@@ -24,7 +22,6 @@ public class LoginPage extends BasePage{
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, 10);
     }
 
     @Override
@@ -57,10 +54,9 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-
     @Step("Verifying that incorrect data is forbidden")
     public LoginPage verifyIncorrectLogin(String errorMsg) {
-        Assert.assertTrue(incorrectMsg.getText().contains(errorMsg));
+        Assert.assertTrue(incorrectMsg.getText().contains(errorMsg), "Correct message should be displayed");
         return this;
     }
 }

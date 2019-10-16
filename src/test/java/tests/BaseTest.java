@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(description = "Open browser and redirect to page")
     public void openDriver(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
         driver = new ChromeDriver();
@@ -26,7 +26,7 @@ public class BaseTest {
                 .clickLoginBtn();
     }
 
-    @AfterMethod
+    @AfterMethod(description = "Close browser")
     public void sendResultToReport(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
             AllureUtils.takeScreenshot(driver);

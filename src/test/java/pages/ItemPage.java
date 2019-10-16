@@ -4,13 +4,11 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import static pages.ProductsPage.itemName;
 
 public class ItemPage extends BasePage {
-    WebDriverWait wait;
 
     @FindBy(xpath = "//div[@class='inventory_details_name']")
     private WebElement itemDetailsName;
@@ -23,7 +21,6 @@ public class ItemPage extends BasePage {
 
     public ItemPage(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, 10);
     }
 
     @Override
@@ -34,7 +31,7 @@ public class ItemPage extends BasePage {
     @Step("Verifying if user is redirected to details page")
     public ItemPage verifyItemPage() {
         String actualItemName = itemDetailsName.getText();
-        Assert.assertEquals(actualItemName, itemName);
+        Assert.assertEquals(actualItemName, itemName, "Details page is verified with selected item name");
         return this;
     }
 

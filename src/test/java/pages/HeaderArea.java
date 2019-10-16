@@ -4,12 +4,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class HeaderArea extends BasePage {
-    WebDriverWait wait;
 
     @FindBy(xpath = "//span[@class='fa-layers-counter shopping_cart_badge']")
     private WebElement cartItemsCount;
@@ -30,13 +27,12 @@ public class HeaderArea extends BasePage {
 
     public HeaderArea(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, 10);
     }
 
     @Override
     @Step("Verifying if element is presented on page")
     public void verifyPresenceOfItem(boolean isPresented) {
-        Assert.assertEquals(isElementPresented(cartItemsCount), isPresented);
+        Assert.assertEquals(isElementPresented(cartItemsCount), isPresented, "Counter should be presented");
     }
 
     @Step("Getting items count from cart")
@@ -46,7 +42,7 @@ public class HeaderArea extends BasePage {
 
     @Step("Verifying correct number of items in cart")
     public HeaderArea verifyCount(String expectedCount) {
-        Assert.assertEquals(getItemsCount(), expectedCount);
+        Assert.assertEquals(getItemsCount(), expectedCount, "Correct count is displayed");
         return this;
     }
 
@@ -59,14 +55,14 @@ public class HeaderArea extends BasePage {
     @Step("User click Menu icon")
     public HeaderArea clickMenuBtn() {
         menuBtn.click();
-        wait.until(ExpectedConditions.visibilityOf(resetAppItem));
+        waitClickableElement(resetAppItem);
         return this;
     }
 
     @Step("User clicks Reset App State link")
     public HeaderArea resetAppState() {
         resetAppItem.click();
-        wait.until(ExpectedConditions.elementToBeClickable(cartIcon));
+        waitClickableElement(cartIcon);
         return this;
     }
 
@@ -84,7 +80,7 @@ public class HeaderArea extends BasePage {
 
     @Step("Verifying if user redirected to correct page")
     public HeaderArea validateURL(String expectedURL) {
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL);
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL, "Page with correct URL is reached");
         return this;
     }
 

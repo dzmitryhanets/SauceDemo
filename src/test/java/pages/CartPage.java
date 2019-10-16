@@ -29,7 +29,7 @@ public class CartPage extends BasePage {
     @Override
     @Step("Verifying if element is presented on page")
     public void verifyPresenceOfItem(boolean isPresented) {
-        Assert.assertEquals(isElementPresented(cartItem), isPresented);
+        Assert.assertEquals(isElementPresented(cartItem), isPresented, "Added items should be presented in Cart");
     }
 
     @Step("User clicks Continue Shopping button")

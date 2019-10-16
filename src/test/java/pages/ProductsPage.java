@@ -4,14 +4,11 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
 
 public class ProductsPage extends BasePage {
-    WebDriverWait wait;
     public static String itemName;
 
     @FindBy(xpath = "//div[contains(text(),'Products')]")
@@ -37,7 +34,6 @@ public class ProductsPage extends BasePage {
 
     public ProductsPage(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, 10);
     }
 
     @Override
@@ -65,7 +61,7 @@ public class ProductsPage extends BasePage {
 
     @Step("Verifying that user is on Products page")
     public ProductsPage verifyRedirectToProducts(String expectedTitle) {
-        Assert.assertEquals(productsTitle.getText(), expectedTitle);
+        Assert.assertEquals(productsTitle.getText(), expectedTitle, "Redirection to Products page is verified with page name");
         return this;
     }
 
@@ -85,7 +81,7 @@ public class ProductsPage extends BasePage {
     @Step("Verifying if items are sorted by name")
     public ProductsPage verifySortingByName() {
         String expectedItem = items.get(items.size() - 1).getText();
-        Assert.assertEquals(itemName, expectedItem);
+        Assert.assertEquals(itemName, expectedItem, "First item should become last");
         return this;
     }
 
@@ -100,7 +96,7 @@ public class ProductsPage extends BasePage {
     public ProductsPage sortItemsByPriceAsc() {
         sortMenu.click();
         sortByPriceASC.click();
-        wait.until(ExpectedConditions.elementToBeSelected(sortByPriceASC));
+        waitSelectedElement(sortByPriceASC);
         return this;
     }
 
@@ -108,7 +104,7 @@ public class ProductsPage extends BasePage {
     public ProductsPage verifyPricesAreSorted(boolean expectedResult) {
         Double priceItem1 = new Double(Double.parseDouble(itemPrices.get(0).getText().substring(1)));
         Double priceItem2 = new Double(Double.parseDouble(itemPrices.get(1).getText().substring(1)));
-        Assert.assertEquals(priceItem1 < priceItem2, expectedResult);
+        Assert.assertEquals(priceItem1 < priceItem2, expectedResult, "{priceItem2} should be greater then {priceItem1}");
         return this;
     }
 
@@ -116,7 +112,7 @@ public class ProductsPage extends BasePage {
     public ProductsPage sortItemsByPriceDesc() {
         sortMenu.click();
         sortByPriceDESC.click();
-        wait.until(ExpectedConditions.elementToBeSelected(sortByPriceDESC));
+        waitSelectedElement(sortByPriceDESC);
         return this;
     }
 }
