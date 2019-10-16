@@ -6,6 +6,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import utils.AllureUtils;
+import utils.CapabilitiesGenerator;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +17,7 @@ public class BaseTest {
     @BeforeMethod(description = "Open browser and redirect to page")
     public void openDriver(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         new LoginPage(driver)
