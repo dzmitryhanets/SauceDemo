@@ -19,10 +19,9 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage
-                .openPage();
-        loginPage.inputName("standard_user")
+        new LoginPage(driver)
+                .openPage()
+                .inputName("standard_user")
                 .inputPassword("secret_sauce")
                 .clickLoginBtn();
     }

@@ -33,14 +33,14 @@ public class CartPage extends BasePage {
     }
 
     @Step("User clicks Continue Shopping button")
-    public CartPage clickContinueBtn() {
+    public ProductsPage clickContinueBtn() {
         continueBtn.click();
-        return this;
+        return new ProductsPage(driver);
     }
 
     @Step("User clicks Checkout button")
-    public CartPage clickCheckoutBtn() {
+    public ConfirmationPage clickCheckoutBtn() {
         checkoutBtn.click();
-        return this;
+        return new ConfirmationPage(driver);
     }
 }

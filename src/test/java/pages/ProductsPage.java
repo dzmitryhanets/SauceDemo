@@ -52,9 +52,9 @@ public class ProductsPage extends BasePage {
     }
 
     @Step("Select item")
-    public ProductsPage clickItem(int itemNumber) {
+    public ItemPage clickItem(int itemNumber) {
         items.get(itemNumber - 1).click();
-        return this;
+        return new ItemPage(driver);
     }
 
     @Step("Click Add To Cart button")

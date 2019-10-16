@@ -10,10 +10,8 @@ public class OverviewTest extends BaseTest {
         new ProductsPage(driver)
                 .clickAddBtn(2);
         new HeaderArea(driver)
-                .clickCartIcon();
-        new CartPage(driver)
-                .clickCheckoutBtn();
-        new ConfirmationPage(driver)
+                .clickCartIcon()
+                .clickCheckoutBtn()
                 .inputFisrtName("test")
                 .inputLastName("test")
                 .inputPostalCode("test")
@@ -28,17 +26,14 @@ public class OverviewTest extends BaseTest {
         new ProductsPage(driver)
                 .clickAddBtn(2);
         new HeaderArea(driver)
-                .clickCartIcon();
-        new CartPage(driver)
-                .clickCheckoutBtn();
-        new ConfirmationPage(driver)
+                .clickCartIcon()
+                .clickCheckoutBtn()
                 .inputFisrtName("test")
                 .inputLastName("test")
                 .inputPostalCode("test")
                 .clickConfirmBtn();
         new OverviewPage(driver)
-                .finishOrder();
-        new SuccessPage(driver)
+                .finishOrder()
                 .verifySuccessOrder("THANK YOU FOR YOUR ORDER");
     }
 }

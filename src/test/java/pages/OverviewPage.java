@@ -32,8 +32,8 @@ public class OverviewPage extends BasePage {
     }
 
     @Step("User finishes order")
-    public OverviewPage finishOrder() {
+    public SuccessPage finishOrder() {
         finishBtn.click();
-        return this;
+        return new SuccessPage(driver);
     }
 }

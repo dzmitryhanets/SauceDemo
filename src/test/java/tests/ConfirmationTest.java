@@ -12,10 +12,8 @@ public class ConfirmationTest extends BaseTest {
     @Test(description = "Cancel checkout")
     public void userIsRedirectedToCart() {
         new HeaderArea(driver)
-                .clickCartIcon();
-        new CartPage(driver)
-                .clickCheckoutBtn();
-        new ConfirmationPage(driver)
+                .clickCartIcon()
+                .clickCheckoutBtn()
                 .clickCancelBtn()
                 .verifyPresenceOfItem(false);
     }
@@ -24,10 +22,8 @@ public class ConfirmationTest extends BaseTest {
     @Description("Empty data ban")
     public void emptyDataIsNotAccepted(String firstName, String lastName, String code, String errorMessage) {
         new HeaderArea(driver)
-                .clickCartIcon();
-        new CartPage(driver)
-                .clickCheckoutBtn();
-        new ConfirmationPage(driver)
+                .clickCartIcon()
+                .clickCheckoutBtn()
                 .inputFisrtName(firstName)
                 .inputLastName(lastName)
                 .inputPostalCode(code)

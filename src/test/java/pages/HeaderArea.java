@@ -12,7 +12,7 @@ public class HeaderArea extends BasePage {
     WebDriverWait wait;
 
     @FindBy(xpath = "//span[@class='fa-layers-counter shopping_cart_badge']")
-    public WebElement cartItemsCount;
+    private WebElement cartItemsCount;
     @FindBy(tagName = "svg")
     private WebElement cartIcon;
     @FindBy(xpath = "//button[text()='Open Menu']")
@@ -89,9 +89,9 @@ public class HeaderArea extends BasePage {
     }
 
     @Step("User clicks Logout link")
-    public HeaderArea clickLogout() {
+    public LoginPage clickLogout() {
         logoutItem.click();
-        return this;
+        return new LoginPage(driver);
     }
 
     @Step("User clicks All Items link")

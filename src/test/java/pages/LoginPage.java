@@ -28,6 +28,7 @@ public class LoginPage extends BasePage{
     }
 
     @Override
+    @Step("Verifying if user is successfully logged out")
     public void verifyPresenceOfItem(boolean isPresented) {
         Assert.assertEquals(isElementPresented(loginBtn), isPresented);
     }
@@ -56,11 +57,6 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-    @Step("Verifying is user is successfully logged out")
-    public LoginPage verifyLoginBtn() {
-        Assert.assertTrue(loginBtn.isDisplayed());
-        return this;
-    }
 
     @Step("Verifying that incorrect data is forbidden")
     public LoginPage verifyIncorrectLogin(String errorMsg) {

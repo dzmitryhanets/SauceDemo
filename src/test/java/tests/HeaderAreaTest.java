@@ -11,8 +11,7 @@ public class HeaderAreaTest extends BaseTest {
     public void appStateIsReset() {
         new ProductsPage(driver)
                 .clickAddBtn(2);
-        HeaderArea headerArea = new HeaderArea(driver);
-        headerArea
+        new HeaderArea(driver)
                 .clickMenuBtn()
                 .resetAppState()
                 .closeMenu()
@@ -31,9 +30,8 @@ public class HeaderAreaTest extends BaseTest {
     public void userIsLoggedOut() {
         new HeaderArea(driver)
                 .clickMenuBtn()
-                .clickLogout();
-        new LoginPage(driver)
-                .verifyLoginBtn();
+                .clickLogout()
+                .verifyPresenceOfItem(true);
     }
 
     @Test(description = "All Items link working" )
