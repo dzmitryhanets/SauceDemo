@@ -61,7 +61,7 @@ public class ProductsPage extends BasePage {
 
     @Step("Verifying that user is on Products page")
     public ProductsPage verifyRedirectToProducts(String expectedTitle) {
-        Assert.assertEquals(productsTitle.getText(), expectedTitle, "Redirection to Products page is verified with page name");
+        Assert.assertEquals(productsTitle.getText(), expectedTitle, "Redirection to Products page verified with page name");
         return this;
     }
 
@@ -81,7 +81,7 @@ public class ProductsPage extends BasePage {
     @Step("Verifying if items are sorted by name")
     public ProductsPage verifySortingByName() {
         String expectedItem = items.get(items.size() - 1).getText();
-        Assert.assertEquals(itemName, expectedItem, "First item should become last");
+        Assert.assertEquals(itemName, expectedItem, "First item became last");
         return this;
     }
 
@@ -104,7 +104,7 @@ public class ProductsPage extends BasePage {
     public ProductsPage verifyPricesAreSorted(boolean expectedResult) {
         Double priceItem1 = new Double(Double.parseDouble(itemPrices.get(0).getText().substring(1)));
         Double priceItem2 = new Double(Double.parseDouble(itemPrices.get(1).getText().substring(1)));
-        Assert.assertEquals(priceItem1 < priceItem2, expectedResult, "{priceItem2} should be greater then {priceItem1}");
+        Assert.assertEquals(priceItem1 < priceItem2, expectedResult, "{priceItem2} greater then {priceItem1}");
         return this;
     }
 

@@ -56,7 +56,7 @@ public class LoginPage extends BasePage{
 
     @Step("Verifying that incorrect data is forbidden")
     public LoginPage verifyIncorrectLogin(String errorMsg) {
-        Assert.assertTrue(incorrectMsg.getText().contains(errorMsg), "Correct message should be displayed");
+        Assert.assertTrue(incorrectMsg.getText().contains(errorMsg), "Correct message displayed");
         return this;
     }
 }

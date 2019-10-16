@@ -1,6 +1,5 @@
 package tests;
 
-import io.qameta.allure.Description;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
@@ -35,8 +34,7 @@ public class LoginTest {
                 .verifyRedirectToProducts("Products");
     }
 
-    @Test(dataProvider = "incorrectLogin")
-    @Description("Incorrect data ban")
+    @Test(dataProvider = "incorrectLogin", description = "Incorrect data ban")
     public void incorrectDataIsNotAccepted(String name, String password, String expectedResult) {
         new LoginPage(driver)
                 .openPage()
@@ -54,7 +52,7 @@ public class LoginTest {
         };
     }
 
-    @AfterMethod(description = "Close browser")
+    @AfterMethod(description = "Close browser",  alwaysRun = true)
     public void driverClose(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
             AllureUtils.takeScreenshot(driver);

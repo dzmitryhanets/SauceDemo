@@ -32,7 +32,7 @@ public class HeaderArea extends BasePage {
     @Override
     @Step("Verifying if element is presented on page")
     public void verifyPresenceOfItem(boolean isPresented) {
-        Assert.assertEquals(isElementPresented(cartItemsCount), isPresented, "Counter should be presented");
+        Assert.assertEquals(isElementPresented(cartItemsCount), isPresented, "Counter presented");
     }
 
     @Step("Getting items count from cart")
@@ -42,7 +42,7 @@ public class HeaderArea extends BasePage {
 
     @Step("Verifying correct number of items in cart")
     public HeaderArea verifyCount(String expectedCount) {
-        Assert.assertEquals(getItemsCount(), expectedCount, "Correct count is displayed");
+        Assert.assertEquals(getItemsCount(), expectedCount, "Correct count displayed");
         return this;
     }
 
@@ -80,7 +80,7 @@ public class HeaderArea extends BasePage {
 
     @Step("Verifying if user redirected to correct page")
     public HeaderArea validateURL(String expectedURL) {
-        Assert.assertEquals(driver.getCurrentUrl(), expectedURL, "Page with correct URL is reached");
+        Assert.assertEquals(driver.getCurrentUrl(), expectedURL, "Page with correct URL reached");
         return this;
     }
 

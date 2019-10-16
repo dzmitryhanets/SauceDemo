@@ -31,7 +31,7 @@ public class ItemPage extends BasePage {
     @Step("Verifying if user is redirected to details page")
     public ItemPage verifyItemPage() {
         String actualItemName = itemDetailsName.getText();
-        Assert.assertEquals(actualItemName, itemName, "Details page is verified with selected item name");
+        Assert.assertEquals(actualItemName, itemName, "Details page verified with selected item name");
         return this;
     }
 

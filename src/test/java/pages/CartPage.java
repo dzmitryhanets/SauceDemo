@@ -10,7 +10,6 @@ import org.testng.Assert;
 import java.util.List;
 
 public class CartPage extends BasePage {
-    WebDriverWait wait;
 
     @FindBy(xpath = "//div[@class='cart_item']")
     private WebElement cartItem;
@@ -23,13 +22,12 @@ public class CartPage extends BasePage {
 
     public CartPage(WebDriver driver) {
         super(driver);
-        this.wait = new WebDriverWait(driver, 10);
     }
 
     @Override
     @Step("Verifying if element is presented on page")
     public void verifyPresenceOfItem(boolean isPresented) {
-        Assert.assertEquals(isElementPresented(cartItem), isPresented, "Added items should be presented in Cart");
+        Assert.assertEquals(isElementPresented(cartItem), isPresented, "Added items present in Cart");
     }
 
     @Step("User clicks Continue Shopping button")

@@ -1,10 +1,7 @@
 package tests;
 
-import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.ConfirmationPage;
 import pages.HeaderArea;
 
 public class ConfirmationTest extends BaseTest {
@@ -18,8 +15,7 @@ public class ConfirmationTest extends BaseTest {
                 .verifyPresenceOfItem(false);
     }
 
-    @Test(dataProvider = "incorrectData")
-    @Description("Empty data ban")
+    @Test(dataProvider = "incorrectData", description = "Empty data ban")
     public void emptyDataIsNotAccepted(String firstName, String lastName, String code, String errorMessage) {
         new HeaderArea(driver)
                 .clickCartIcon()

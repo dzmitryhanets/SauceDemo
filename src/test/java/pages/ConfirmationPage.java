@@ -64,7 +64,7 @@ public class ConfirmationPage extends BasePage {
 
     @Step("Verifying that incorrect personal data is not accepted")
     public ConfirmationPage verifyIncorrectData(String errorMsgText) {
-        Assert.assertTrue(errorMsg.getText().contains(errorMsgText), "Correct message should be displayed");
+        Assert.assertTrue(errorMsg.getText().contains(errorMsgText), "Correct message displayed");
         return this;
     }
 }

@@ -27,7 +27,7 @@ public class BaseTest {
                 .clickLoginBtn();
     }
 
-    @AfterMethod(description = "Close browser")
+    @AfterMethod(description = "Close browser", alwaysRun = true)
     public void sendResultToReport(ITestResult testResult) throws IOException {
         if (testResult.getStatus() == ITestResult.FAILURE) {
             AllureUtils.takeScreenshot(driver);
