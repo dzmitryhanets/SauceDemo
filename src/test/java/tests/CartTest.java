@@ -1,9 +1,7 @@
 package tests;
 
 import org.testng.annotations.Test;
-import pages.CartPage;
 import pages.HeaderArea;
-import pages.ProductsPage;
 
 public class CartTest extends BaseTest {
 
