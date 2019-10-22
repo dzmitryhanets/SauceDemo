@@ -1,6 +1,7 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
+@Log4j2
 public class ProductsPage extends BasePage {
     public static String itemName;
 
@@ -82,6 +84,7 @@ public class ProductsPage extends BasePage {
     public ProductsPage verifySortingByName() {
         String expectedItem = items.get(items.size() - 1).getText();
         Assert.assertEquals(itemName, expectedItem, "First item became last");
+        log.info("Is item position changed: " + itemName.equals(expectedItem));
         return this;
     }
 
@@ -101,10 +104,13 @@ public class ProductsPage extends BasePage {
     }
 
     @Step("Verifying if items are sorted by price")
-    public ProductsPage verifyPricesAreSorted(boolean expectedResult) {
+    public ProductsPage verifyPrices(boolean expectedResult) {
         Double priceItem1 = new Double(Double.parseDouble(itemPrices.get(0).getText().substring(1)));
         Double priceItem2 = new Double(Double.parseDouble(itemPrices.get(1).getText().substring(1)));
-        Assert.assertEquals(priceItem1 < priceItem2, expectedResult, "{priceItem2} greater then {priceItem1}");
+        Assert.assertEquals(priceItem1 < priceItem2, expectedResult, "priceItem2 greater then priceItem1");
+        log.info("\n" + "Item price 1: " + priceItem1 + "\n" +
+                "Item price 2: " + priceItem2 + "\n"
+                + "Is price2 greater price1: " + (priceItem1 < priceItem2));
         return this;
     }
 

@@ -1,5 +1,6 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
@@ -12,6 +13,7 @@ import utils.CapabilitiesGenerator;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+@Log4j2
 public class LoginTest {
     WebDriver driver;
 
@@ -42,6 +44,8 @@ public class LoginTest {
                 .inputPassword(password)
                 .clickLoginBtn()
                 .verifyIncorrectLogin(expectedResult);
+        log.info("\n" + "Name: " + name + "\n" + "Password: " +
+                password + "\n" + "Error: " + expectedResult);
     }
 
     @DataProvider

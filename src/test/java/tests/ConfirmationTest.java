@@ -1,9 +1,11 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.HeaderArea;
 
+@Log4j2
 public class ConfirmationTest extends BaseTest {
 
     @Test(description = "Cancel checkout")
@@ -25,6 +27,8 @@ public class ConfirmationTest extends BaseTest {
                 .inputPostalCode(code)
                 .clickConfirmBtn()
                 .verifyIncorrectData(errorMessage);
+        log.info("\n" + "First Name: " + firstName + "\n" + "Last Name: " + lastName + "\n"
+                + "Postal Code: " + code + "\n" + "Error: " + errorMessage);
     }
 
     @DataProvider
