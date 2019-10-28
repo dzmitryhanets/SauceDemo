@@ -74,6 +74,7 @@ public class HeaderArea extends BasePage {
 
     @Step("User clicks About link")
     public HeaderArea clickAboutItem() {
+        waitClickableElement(aboutItem);
         aboutItem.click();
         return this;
     }
@@ -92,6 +93,7 @@ public class HeaderArea extends BasePage {
 
     @Step("User clicks All Items link")
     public ProductsPage clickInventoryItem() {
+        waitClickableElement(inventoryItem);
         inventoryItem.click();
         return new ProductsPage(driver);
     }
