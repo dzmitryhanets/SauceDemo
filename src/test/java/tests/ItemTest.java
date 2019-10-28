@@ -11,7 +11,7 @@ public class ItemTest extends BaseTest {
                 .clickItem(2)
                 .clickAddBtn();
         new HeaderArea(driver)
-                .verifyCount("1");
+                .verifyCount("2");
     }
 
     @Test(description = "Adding goods in cart")
