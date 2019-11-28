@@ -61,6 +61,7 @@ public class HeaderArea extends BasePage {
 
     @Step("User clicks Reset App State link")
     public HeaderArea resetAppState() {
+        waitClickableElement(resetAppItem);
         resetAppItem.click();
         waitClickableElement(cartIcon);
         return this;
