@@ -34,6 +34,8 @@ public class ProductsPage extends BasePage {
     @FindBy(xpath = "//option[@value='hilo']")
     private WebElement sortByPriceDESC;
 
+    private boolean isItemsAreSorted = false;
+
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
@@ -77,14 +79,17 @@ public class ProductsPage extends BasePage {
     public ProductsPage sortItemsByNameDesc() {
         sortMenu.click();
         sortByNameDESC.click();
+        for (int i = 0; i < items.size() - 1; i++) {
+            if (items.get(i).getText().compareTo(items.get(i + 1).getText()) > 0) {
+                isItemsAreSorted = true;
+            }
+        }
         return this;
     }
 
     @Step("Verifying if items are sorted by name")
     public ProductsPage verifySortingByName() {
-        String expectedItem = items.get(items.size() - 1).getText();
-        Assert.assertEquals(itemName, expectedItem, "First item became last");
-        log.info("Is item position changed: " + itemName.equals(expectedItem));
+        Assert.assertTrue(isItemsAreSorted);
         return this;
     }
 
@@ -92,6 +97,11 @@ public class ProductsPage extends BasePage {
     public ProductsPage sortItemsByNameAsc() {
         sortMenu.click();
         sortByNameASC.click();
+        for (int i = 0; i < items.size() - 1; i++) {
+            if (items.get(i).getText().compareTo(items.get(i + 1).getText()) < 0) {
+                isItemsAreSorted = true;
+            }
+        }
         return this;
     }
 
@@ -100,17 +110,19 @@ public class ProductsPage extends BasePage {
         sortMenu.click();
         sortByPriceASC.click();
         waitSelectedElement(sortByPriceASC);
+        for (int i = 0; i < itemPrices.size() - 1; i++) {
+            if (new Double(Double.parseDouble(itemPrices.get(i).getText().substring(1))) < new Double(Double.parseDouble(itemPrices.get(i + 1).getText().substring(1)))) {
+                isItemsAreSorted = true;
+            }
+        }
         return this;
     }
 
     @Step("Verifying if items are sorted by price")
-    public ProductsPage verifyPrices(boolean expectedResult) {
-        Double priceItem1 = new Double(Double.parseDouble(itemPrices.get(0).getText().substring(1)));
-        Double priceItem2 = new Double(Double.parseDouble(itemPrices.get(1).getText().substring(1)));
-        Assert.assertEquals(priceItem1 < priceItem2, expectedResult, "priceItem2 greater then priceItem1");
-        log.info("\n" + "Item price 1: " + priceItem1 + "\n" +
-                "Item price 2: " + priceItem2 + "\n"
-                + "Is price2 greater price1: " + (priceItem1 < priceItem2));
+    public ProductsPage verifyPricesAreSorted() {
+        Assert.assertTrue(isItemsAreSorted);
+        log.info("\n" + "Item price 1: " + itemPrices.get(0).getText().substring(1) + "\n" +
+                "Item price 2: " + itemPrices.get(1).getText().substring(1));
         return this;
     }
 
@@ -119,6 +131,11 @@ public class ProductsPage extends BasePage {
         sortMenu.click();
         sortByPriceDESC.click();
         waitSelectedElement(sortByPriceDESC);
+        for (int i = 0; i < itemPrices.size() - 1; i++) {
+            if (new Double(Double.parseDouble(itemPrices.get(i).getText().substring(1))) > new Double(Double.parseDouble(itemPrices.get(i + 1).getText().substring(1)))) {
+                isItemsAreSorted = true;
+            }
+        }
         return this;
     }
 }

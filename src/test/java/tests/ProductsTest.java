@@ -66,14 +66,14 @@ public class ProductsTest extends BaseTest {
     public void itemsAreSortedByPriceASC() {
         new ProductsPage(driver)
                 .sortItemsByPriceAsc()
-                .verifyPrices(true);
+                .verifyPricesAreSorted();
     }
 
     @Test(description = "Sort by price in descending order")
     public void itemsAreSortedByPriceDESC() {
         new ProductsPage(driver)
                 .sortItemsByPriceDesc()
-                .verifyPrices(false);
+                .verifyPricesAreSorted();
     }
 }
 
