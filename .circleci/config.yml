@@ -51,6 +51,5 @@ workflows:
             branches:
               only:
                 - master
-                - qa
     jobs:
       - ui-tests
