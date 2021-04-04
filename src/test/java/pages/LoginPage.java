@@ -13,7 +13,7 @@ public class LoginPage extends BasePage{
     private WebElement userName;
     @FindBy(id = "password")
     private  WebElement passwordField;
-    @FindBy(xpath = "//input[@class='btn_action']")
+    @FindBy(xpath = "//input[@class='submit-button btn_action']")
     private  WebElement loginBtn;
     @FindBy(xpath = "//div[contains(text(),'Products')]")
     private WebElement productsTitle;
