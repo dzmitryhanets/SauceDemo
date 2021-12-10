@@ -55,7 +55,7 @@
         <selenium.version>3.141.59</selenium.version>
         <allure.version>2.13.0</allure.version>
         <lombok.version>1.18.8</lombok.version>
-        <log4j.version>2.12.1</log4j.version>
+        <log4j.version>2.15.0</log4j.version>
     </properties>
     <dependencies>
         <dependency>
